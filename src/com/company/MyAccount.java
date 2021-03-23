@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MyAccount implements account{
@@ -85,6 +86,6 @@ public class MyAccount implements account{
     }
 
     public boolean verifyAccount(String cpf){
-        return this.getCpf().equals(cpf);
+        return Objects.equals(this.getCpf(), cpf);
     }
 }
