@@ -52,17 +52,21 @@ public class MyAccount implements account{
 
     @Override
     public void create(String cpf, int phone, float balance) {
+
         Menus M1 = new Menus();
 
-        boolean confirm = M1.confirm();
-
-        if(confirm)
-        {
-            M1.success();
-        }else{
+        if(this.verifyAccount(cpf)){
+            System.out.println("Account created to: " + this.getCpf());
             M1.options();
-        }
+        }else {
+            boolean confirm = M1.confirm();
 
+            if (confirm) {
+                M1.success(this.getCpf());
+            } else {
+                M1.options();
+            }
+        }
     }
 
     @Override
@@ -78,5 +82,9 @@ public class MyAccount implements account{
     @Override
     public void payment(String cpf) {
 
+    }
+
+    public boolean verifyAccount(String cpf){
+        return this.getCpf().equals(cpf);
     }
 }
